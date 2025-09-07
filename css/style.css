@@ -1,0 +1,61 @@
+body {
+	background: #e9d8f4;
+	min-height: 100vh;
+	font-family: 'Fredoka One', Arial, sans-serif;
+}
+
+.pobrelist-title {
+	font-size: 4rem;
+	color: #4b2673;
+	text-shadow: 3px 3px 0 #fff, 5px 5px 0 #a084ca;
+	letter-spacing: 2px;
+	margin-bottom: 2rem;
+	font-family: 'More Sugar', 'Fredoka One', Arial, sans-serif;
+}
+
+.main-img {
+	max-width: 320px;
+	width: 100%;
+	border-radius: 30px;
+	box-shadow: 0 8px 32px #0002;
+	margin-bottom: 1.5rem;
+}
+
+.star {
+	position: absolute;
+	left: 0;
+	top: 60%;
+	width: 110px;
+}
+
+.star2 {
+	position: absolute;
+	left: 220px;
+	top: 65%;
+	width: 80px;
+}
+
+.btn-pobrelist {
+	font-size: 1.5rem;
+	font-family: 'Fredoka One', Arial, sans-serif;
+	border: 2px solid #222;
+	margin-bottom: 1.2rem;
+	box-shadow: 2px 2px 0 #a084ca;
+	transition: transform 0.1s;
+}
+.btn-pobrelist:active {
+	transform: scale(0.97);
+}
+.btn-categorias {
+	background: #ffe066;
+}
+.btn-prioridades {
+	background: #cdb4f6;
+}
+.btn-itens {
+	background: #fff;
+}
+
+@media (max-width: 900px) {
+	.star, .star2 { display: none; }
+}
