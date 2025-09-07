@@ -1,26 +1,26 @@
-<?php
-include_once(__DIR__ . "/view/include/header.php");
 
-?>
-	<div class="container-fluid min-vh-100 d-flex flex-column justify-content-center align-items-center">
-        				<h1 class="pobrelist-title text-center">POBRELIST</h1>
+<?php 
+$title = "PobreList - Home";    
+include_once(__DIR__ . "/view/include/header.php"); ?>
 
-		<div class="row w-100 justify-content-center align-items-center" style="min-height: 100vh;">
-			<div class="col-lg-5 d-flex flex-column align-items-center position-relative mb-4 mb-lg-0">
-				<img src="src/img/indexfoto.png" alt="Mascote PobreList" class="main-img mb-2">
-				<img src="src/img/indexdireito.png" class="star" alt="Sparkles" style="background: #fff0;">
-				<img src="src/img/indexesquerdo.png" class="star2" alt="Arco-íris" style="background: #fff0;">
-			</div>
-			<div class="col-lg-7 d-flex flex-column align-items-center">
-				<a href="view/itens/" class="btn btn-pobrelist btn-itens w-75">GERENCIAR ITENS</a>
-				<a href="view/categorias/" class="btn btn-pobrelist btn-categorias w-75">GERENCIAR CATEGORIAS</a>
-				<a href="view/prioridades/" class="btn btn-pobrelist btn-prioridades w-75">GERENCIAR PRIORIDADES</a>
-			</div>
-		</div>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<?php
-include_once(__DIR__ . "/view/include/footer.php");
-
-?>
-</html>
+<main class="flex-grow-1 d-flex flex-column w-100" style="min-height:0;">
+    <div class="d-flex justify-content-center align-items-center gap-2 mb-3 w-100">
+        <img src="src/img/estrela.png" alt="Estrela esquerda" style="height:48px;width:auto;">
+        <h1 class="pobrelist-title display-1 fw-bold text-nowrap text-center m-0" style="font-family:'More Sugar','Fredoka One',cursive; color:#4b2673; text-shadow: 4px 4px 0 #fff, 7px 7px 0 #a084ca; letter-spacing:4px;">
+            POBRELIST
+        </h1>
+        <img src="src/img/estrela.png" alt="Estrela direita" style="height:48px;width:auto;">
+    </div>
+    <div class="flex-grow-1 d-flex flex-column flex-md-row justify-content-center align-items-center w-100" style="min-height:0;">
+        <div class="d-flex justify-content-center align-items-center mb-md-0" style="flex:1;">
+            <img src="src/img/indexfoto.png" class="main-img" alt="Mascote PobreList">
+        </div>
+        <div class="d-flex flex-column align-items-start justify-content-start" style="flex:1;">
+            <a href="view/itens/listar.php" class="btn btn-pobrelist btn-itens w-100 mb-3 " style="max-width:500px;">GERENCIAR ITENS</a>
+            <a href="view/categorias/listar.php" class="btn btn-pobrelist btn-categorias w-100 mb-3" style="max-width:600px;">GERENCIAR CATEGORIAS</a>
+            <a href="view/prioridades/listar.php" class="btn btn-pobrelist btn-prioridades w-100" style="max-width:650px;">GERENCIAR PRIORIDADES</a>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<?php include_once(__DIR__ . "/view/include/footer.php"); ?>

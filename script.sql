@@ -22,7 +22,10 @@ CREATE TABLE item (
     categoria_id INT NOT NULL,
     prioridade_id INT NOT NULL,
     preco_estimado DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+    url_imagem VARCHAR(255) NULL,
+    url_web VARCHAR(255) NULL,
     data_desejo DATE NOT NULL,
+    comprado TINYINT(1) NOT NULL DEFAULT 0,
     FOREIGN KEY (categoria_id) REFERENCES categoria(id),
     FOREIGN KEY (prioridade_id) REFERENCES prioridade(id)
 );
