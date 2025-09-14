@@ -1,6 +1,6 @@
 # PobreList
 
-PobreList é um sistema web para gerenciamento de lista de desejos, desenvtelasvido como projeto acadêmico utilizando PHP (MVC), MySQL e Bootstrap. O objetivo é proporcionar uma experiência simples, intuitiva e eficiente para organizar e priorizar itens desejados.
+PobreList é um sistema web para gerenciamento de lista de desejos, desenvolvido como projeto acadêmico utilizando PHP (MVC), MySQL e Bootstrap. O objetivo é proporcionar uma experiência simples, intuitiva e eficiente para organizar e priorizar itens desejados.
 
 ---
 
@@ -55,7 +55,7 @@ PobreList é um sistema web para gerenciamento de lista de desejos, desenvtelasv
    cd PobreList
    ```
 3. Configure o arquivo `config.php` com as credenciais do seu banco de dados.
-4. Importe o banco de dados presente na pasta `database` para o seu MySQL.
+4. Importe o banco de dados presente no `script.sql` para o seu MySQL.
 5. Acesse o sistema pelo navegador: [http://localhost:80](http://localhost:80)
 
 
