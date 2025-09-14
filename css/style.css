@@ -28,8 +28,8 @@ body {
 	}
 }
 
-.pobrelist-title {
-	font-size: 5rem;
+.pobrelist-title, .pobrelist-subtitulo{
+
 	color: #4b2673;
 	text-shadow: 3px 3px 0 #fff, 5px 5px 0 #a084ca;
 	letter-spacing: 2px;
@@ -87,6 +87,9 @@ body {
 
 }
 
+body, html {
+  overflow-x: hidden;
+}
 
 @media (max-width: 768px) {
 	.main-img {

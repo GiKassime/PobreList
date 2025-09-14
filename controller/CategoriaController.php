@@ -38,6 +38,12 @@ class CategoriaController {
 	}
 
 	public function excluir(int $id) {
-		return $this->categoriaDAO->excluir($id);
+		$erro = [];
+		$erro = $this->categoriaService->excluirCategoria($id);
+		if (count($erro) > 0) {
+			return $erro;
+		}else{
+			return $this->categoriaDAO->excluir($id);
+		}
 	}
 }

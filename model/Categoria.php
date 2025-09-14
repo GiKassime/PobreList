@@ -3,6 +3,8 @@
 class Categoria {
 	private ?int $id;
 	private ?string $nome;
+	private ?string $cor;
+
 
 	/**
 	 * Get the value of id
@@ -35,6 +37,24 @@ class Categoria {
 	public function setNome(?string $nome): self
 	{
 		$this->nome = $nome;
+		return $this;
+	}
+
+	/**
+	 * Get the value of cor
+	 */
+	public function getCor(): ?string
+	{
+		return $this->cor;
+	}
+
+	/**
+	 * Set the value of cor
+	 */
+	public function setCor(?string $cor): self
+	{
+		$this->cor = $cor;
+
 		return $this;
 	}
 }

@@ -26,6 +26,11 @@ include_once(__DIR__ . '/../include/nav.php');
             <label for="txtNome" class="form-label fw-bold">Nome da Categoria:</label>
             <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Ex: Eletrônicos" value="<?= $categoria ? $categoria->getNome() : '' ?>">
         </div>
+        <div class="mb-3">
+            <label for="cor" class="form-label">Cor da Categoria:</label>
+            <input type="color" class="form-control form-control-color" id="cor" name="cor"
+            value="<?= $categoria ? htmlspecialchars($categoria->getCor()) : '#FFD700' ?>">
+        </div>
         <div class="col-12 d-flex justify-content-between align-items-center mt-3">
             <button type="submit" class="btn btn-success px-4 fw-bold">Salvar</button>
             <a href="listar.php" class="btn btn-secondary">Voltar</a>

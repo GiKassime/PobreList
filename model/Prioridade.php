@@ -3,6 +3,7 @@
 class Prioridade {
 	private ?int $id;
 	private ?string $nivel;
+	private ?string $cor;
 
 	/**
 	 * Get the value of id
@@ -35,6 +36,24 @@ class Prioridade {
 	public function setNivel(?string $nivel): self
 	{
 		$this->nivel = $nivel;
+		return $this;
+	}
+
+	/**
+	 * Get the value of cor
+	 */
+	public function getCor(): ?string
+	{
+		return $this->cor;
+	}
+
+	/**
+	 * Set the value of cor
+	 */
+	public function setCor(?string $cor): self
+	{
+		$this->cor = $cor;
+
 		return $this;
 	}
 }

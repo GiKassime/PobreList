@@ -18,7 +18,8 @@ class CategoriaDAO {
 		foreach ($result as $row) {
 			$cat = new Categoria();
 			$cat->setId($row['id'])
-				->setNome($row['nome']);
+				->setNome($row['nome'])
+				->setCor($row['categoria_cor']);
 			$categorias[] = $cat;
 		}
 		return $categorias;
@@ -26,9 +27,9 @@ class CategoriaDAO {
 
 	public function inserir(Categoria $categoria) {
 		try {
-			$sql = "INSERT INTO categoria (nome) VALUES (?)";
+			$sql = "INSERT INTO categoria (nome,categoria_cor) VALUES (?,?)";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->execute([$categoria->getNome()]);
+			$stmt->execute([$categoria->getNome(), $categoria->getCor()]);
 			return null;
 		} catch (PDOException $e) {
 			return $e;
@@ -37,9 +38,9 @@ class CategoriaDAO {
 
 	public function alterar(Categoria $categoria) {
 		try {
-			$sql = "UPDATE categoria SET nome=? WHERE id=?";
+			$sql = "UPDATE categoria SET nome = ?,categoria_cor = ? WHERE id = ?";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->execute([$categoria->getNome(), $categoria->getId()]);
+			$stmt->execute([$categoria->getNome(),$categoria->getCor(), $categoria->getId()]);
 			return null;
 		} catch (PDOException $e) {
 			return $e;
@@ -54,7 +55,8 @@ class CategoriaDAO {
 		if ($row) {
 			$cat = new Categoria();
 			$cat->setId($row['id'])
-				->setNome($row['nome']);
+				->setNome($row['nome'])
+				->setCor($row['categoria_cor']);
 			return $cat;
 		}
 		return null;
@@ -69,5 +71,13 @@ class CategoriaDAO {
 		} catch (PDOException $e) {
 			return $e;
 		}
+	}
+	public function existeComCategoria($idCategoria)
+	{
+		$sql = "SELECT COUNT(*) as total FROM item WHERE categoria_id = ?";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute([$idCategoria]);
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $row && $row['total'] > 0;
 	}
 }

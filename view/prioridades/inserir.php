@@ -6,9 +6,11 @@ $prioridade = null;
 
 if (isset($_POST['nivel'])) {
     $nivel = trim($_POST['nivel']) ?: null;
+    $cor = trim($_POST['cor']) ?: null;
     $prioridade = new Prioridade();
     $prioridade->setId(0);
     $prioridade->setNivel($nivel);
+    $prioridade->setCor($cor);
     $prioridadeCont = new PrioridadeController();
     $erros = $prioridadeCont->inserir($prioridade);
     if (!$erros) {
