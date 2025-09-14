@@ -18,7 +18,7 @@ PobreList é um sistema web para gerenciamento de lista de desejos, desenvtelasv
 - **Backend:** PHP 8+, padrão MVC DAO
 - **Banco de Dados:** MySQL
 - **Frontend:** Bootstrap 5, HTML5, CSS3
-- **Outros:** Ícones Bootstrap, jQuery (para filtros dinâmicos)
+- **Outros:** Ícones Bootstrap
 
 ---
 
