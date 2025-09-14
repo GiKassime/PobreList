@@ -52,6 +52,12 @@ class PrioridadeController {
 	}
 
 	public function excluir(int $id) {
-		return $this->prioridadeDAO->excluir($id);
+		$erro = [];
+		$erro = $this->prioridadeService->excluirPrioridade($id);
+		if (count($erro) > 0) {
+			return $erro;
+		}else{
+			return $this->prioridadeDAO->excluir($id);
+		}
 	}
 }

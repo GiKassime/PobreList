@@ -2,14 +2,17 @@
 require_once(__DIR__ . '/../util/Connection.php');
 require_once(__DIR__ . '/../model/Prioridade.php');
 
-class PrioridadeDAO {
+class PrioridadeDAO
+{
 	private $conn;
 
-	public function __construct() {
+	public function __construct()
+	{
 		$this->conn = Connection::getConnection();
 	}
 
-	public function listar() {
+	public function listar()
+	{
 		$sql = "SELECT * FROM prioridade";
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
@@ -19,60 +22,77 @@ class PrioridadeDAO {
 			$prioridade = new Prioridade();
 			$prioridade->setId($row['id']);
 			$prioridade->setNivel($row['nivel']);
+			$prioridade->setCor($row['prioridade_cor']);
 			$prioridades[] = $prioridade;
 		}
 		return $prioridades;
 	}
 
-	public function inserir(Prioridade $prioridade) {
+	public function inserir(Prioridade $prioridade)
+	{
 		try {
-			$sql = "INSERT INTO prioridade (nivel) VALUES (:nivel)";
+			$sql = "INSERT INTO prioridade (nivel,prioridade_cor) VALUES (?,?)";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->bindValue(':nivel', $prioridade->getNivel());
-			$stmt->execute();
+			$stmt->execute([
+				$prioridade->getNivel(),
+				$prioridade->getCor()
+			]);
 			return null;
 		} catch (PDOException $e) {
 			return $e;
 		}
 	}
 
-	public function alterar(Prioridade $prioridade) {
+	public function alterar(Prioridade $prioridade)
+	{
 		try {
-			$sql = "UPDATE prioridade SET nivel = :nivel WHERE id = :id";
+			$sql = "UPDATE prioridade SET nivel = ?, prioridade_cor = ? WHERE id = ?";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->bindValue(':nivel', $prioridade->getNivel());
-			$stmt->bindValue(':id', $prioridade->getId(), PDO::PARAM_INT);
-			$stmt->execute();
+			$stmt->execute([
+				$prioridade->getNivel(),
+				$prioridade->getCor(),
+				$prioridade->getId()
+			]);
 			return null;
 		} catch (PDOException $e) {
 			return $e;
 		}
 	}
 
-	public function buscarPorId($id) {
-		$sql = "SELECT * FROM prioridade WHERE id = :id";
+	public function buscarPorId($id)
+	{
+		$sql = "SELECT * FROM prioridade WHERE id = ?";
 		$stmt = $this->conn->prepare($sql);
-		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-		$stmt->execute();
+		$stmt->execute([$id]);
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		if ($row) {
 			$prioridade = new Prioridade();
 			$prioridade->setId($row['id']);
-			$prioridade->setNivel($row['nivel']);
+			$prioridade->setNivel($row['nivel'])
+				->setCor($row['prioridade_cor']);
 			return $prioridade;
 		}
 		return null;
 	}
 
-	public function excluir($id) {
+	public function excluir($id)
+	{
+
 		try {
-			$sql = "DELETE FROM prioridade WHERE id = :id";
+			$sql = "DELETE FROM prioridade WHERE id = ?";
 			$stmt = $this->conn->prepare($sql);
-			$stmt->bindValue(':id', $id, PDO::PARAM_INT);
-			$stmt->execute();
+			$stmt->execute([$id]);
 			return null;
 		} catch (PDOException $e) {
 			return $e;
 		}
+	}
+	public function existeComPrioridade($idPrioridade)
+	{
+		$sql = "SELECT COUNT(*) as total FROM item WHERE prioridade_id = ?";
+		$stmt = $this->conn->prepare($sql);
+		$stmt->execute([$idPrioridade]);
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $row && $row['total'] > 0;
 	}
 }

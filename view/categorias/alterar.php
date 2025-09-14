@@ -8,9 +8,11 @@ $id = null;
 if (isset($_POST['nome'])) {
     $id = is_numeric($_POST['id']) ? (int)$_POST['id'] : null;
     $nome = trim($_POST['nome']) ?: null;
+    $cor = trim($_POST['cor']) ?: null;
     $categoria = new Categoria();
     $categoria->setId($id);
     $categoria->setNome($nome);
+    $categoria->setCor($cor);
     $categoriaCont = new CategoriaController();
     $erros = $categoriaCont->alterar($categoria);
     if (!$erros) {

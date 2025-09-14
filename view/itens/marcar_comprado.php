@@ -11,6 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'], $_POST['comprad
         $item->setComprado($comprado);
         $itemCont->alterar($item);
     }
+    if ($comprado) {
+        header('Location: listar_comprados.php');
+        exit;
+
+    }
 }
 header('Location: listar.php');
 exit;

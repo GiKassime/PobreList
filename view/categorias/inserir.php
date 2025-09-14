@@ -6,9 +6,11 @@ $categoria = null;
 
 if (isset($_POST['nome'])) {
     $nome = trim($_POST['nome']) ?: null;
+    $cor = trim($_POST['cor']) ?: null;
     $categoria = new Categoria();
     $categoria->setId(0);
     $categoria->setNome($nome);
+    $categoria->setCor($cor);
     $categoriaCont = new CategoriaController();
     $erros = $categoriaCont->inserir($categoria);
     if (!$erros) {
