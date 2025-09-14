@@ -26,7 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Estrutura para tabela `categoria`
 --
-
+CREATE database pobrelist;
+use pobrelist;
 CREATE TABLE `categoria` (
   `id` int NOT NULL,
   `nome` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
