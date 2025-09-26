@@ -23,12 +23,12 @@ foreach ($nao_comprados as $item) {
         <div class="col-12">
             <div class="row justify-content-center mb-5">
                 <div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center align-items-center gap-2 flex-wrap">
-                    <img src="../../src/img/comprar.png" alt="Estrela esquerda" style="max-height:150px;width:auto;min-height: auto;">
+                    <img src="../../src/img/comprar.png" alt="Estrela esquerda" class="d-none d-md-block" style="height:clamp(80px, 12vw, 150px);width:auto;transform: scaleX(-1);">
                     <h1 class="pobrelist-subtitulo fw-bold text-nowrap text-center m-0"
                         style="font-family:'More Sugar','Fredoka One',cursive; color:#4b2673; text-shadow: 4px 4px 0 #fff, 7px 7px 0 #a084ca; letter-spacing:4px; font-size:clamp(2rem, 6vw, 3.5rem);">
                         Itens a Comprar
                     </h1>
-                    <img src="../../src/img/comprar.png" alt="Estrela direita" style="height:150px;width:auto;">
+                    <img src="../../src/img/comprar.png" alt="Estrela direita" class="d-none d-md-block" style="height:clamp(80px, 12vw, 150px);width:auto;">
                 </div>
             </div>
             <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">

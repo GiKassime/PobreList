@@ -12,12 +12,12 @@ include_once(__DIR__ . '/../include/nav.php');
 <div class="container my-4">
     <div class="row justify-content-center mb-5">
         <div class="w-100 col-12 d-flex justify-content-center align-items-center gap-2 flex-wrap">
-                <img src="../../src/img/prioridade.png" alt="Estrela direita" style="height:150px;width:auto;">
+                <img src="../../src/img/prioridade.png" alt="Estrela esquerda" class="d-none d-md-block" style="height:clamp(80px, 12vw, 150px);width:auto;transform: scaleX(-1);">
             <h1 class="pobrelist-subtitulo fw-bold text-nowrap text-center m-0"
                 style="font-family:'More Sugar','Fredoka One',cursive; color:#4b2673; text-shadow: 4px 4px 0 #fff, 7px 7px 0 #a084ca; letter-spacing:4px; font-size:clamp(2rem, 6vw, 3.5rem);">
                 Gerenciar Prioridades
             </h1>
-                <img src="../../src/img/prioridade.png" alt="Estrela direita" style="height:150px;width:auto;">
+                <img src="../../src/img/prioridade.png" alt="Estrela direita" class="d-none d-md-block" style="height:clamp(80px, 12vw, 150px);width:auto;">
         </div>
     </div>
 

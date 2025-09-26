@@ -2,8 +2,8 @@
 $title = "PobreList - Home";    
 include_once(__DIR__ . "/view/include/header.php"); ?>
 
-<main class="flex-grow-1 d-flex flex-column w-100" style="min-height:0;">
-    <div class="container-fluid px-0">
+<main class="flex-grow-1 d-flex flex-column w-100 justify-center" style="min-height:0;">
+    <div class="container-fluid px-0 mt-5">
         <div class="row justify-content-center mb-4">
             <div class="col-12 col-md-10 col-lg-8 d-flex justify-content-center align-items-center gap-2 flex-wrap">
                 <img src="src/img/estrela.png" alt="Estrela esquerda" style="height:40px;width:auto;">
