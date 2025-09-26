@@ -1,42 +1,16 @@
--- phpMyAdmin SQL Dump
--- version 5.2.2
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Tempo de geração: 26/09/2025 às 00:22
--- Versão do servidor: 8.3.0
--- Versão do PHP: 8.3.6
-
+-- PobreList Database Schema
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET NAMES utf8mb4;
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Banco de dados: `pobrelist`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `categoria`
---
-CREATE database pobrelist;
-use pobrelist;
+CREATE DATABASE IF NOT EXISTS pobrelist;
+USE pobrelist;
 CREATE TABLE `categoria` (
   `id` int NOT NULL,
   `nome` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `categoria_cor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `categoria`
---
+-- Dados iniciais
 
 INSERT INTO `categoria` (`id`, `nome`, `categoria_cor`) VALUES
 (1, 'Limpeza', '#528bff'),
@@ -46,11 +20,24 @@ INSERT INTO `categoria` (`id`, `nome`, `categoria_cor`) VALUES
 (7, 'Gatos', '#ff00d0'),
 (8, 'Acessórios', '#9478d3');
 
--- --------------------------------------------------------
 
---
--- Estrutura para tabela `item`
---
+
+
+CREATE TABLE `prioridade` (
+  `id` int NOT NULL,
+  `nivel` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `prioridade_cor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+INSERT INTO `prioridade` (`id`, `nivel`, `prioridade_cor`) VALUES
+(14, 'Muito alta', '#de1717'),
+(5, 'Alta', '#FF4500'),
+(13, 'Média', '#7cfe84'),
+(8, 'Muito Baixa', '#66a8ff'),
+(12, 'Baixo', '#65dde6');
+
 
 CREATE TABLE `item` (
   `id` int NOT NULL,
@@ -63,11 +50,9 @@ CREATE TABLE `item` (
   `url_web` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `data_desejo` date NOT NULL,
   `comprado` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Despejando dados para a tabela `item`
---
+
 
 INSERT INTO `item` (`id`, `nome`, `descricao`, `categoria_id`, `prioridade_id`, `preco_estimado`, `url_imagem`, `url_web`, `data_desejo`, `comprado`) VALUES
 (22, 'Mop Fácil Dobrável', 'Para facilitar a limpeza diária', 1, 13, 32.30, 'https://down-br.img.susercontent.com/file/br-11134207-7r98o-lr82zgztoqas5c.webp', 'https://s.shopee.com.br/Ldq3pv3IG', '2025-10-06', 0),
@@ -84,76 +69,33 @@ INSERT INTO `item` (`id`, `nome`, `descricao`, `categoria_id`, `prioridade_id`, 
 (28, 'Mesa 200x60cm', 'Mesa pro quarto', 4, 5, 500.00, 'https://http2.mlstatic.com/D_NQ_NP_2X_916838-MLB86018605870_062025-F-mesa-200x60-para-escritorio-escrivaninha-cnt30.webp', 'https://produto.mercadolivre.com.br/MLB-1481034639-mesa-200x60-para-escritorio-escrivaninha-cnt30-_JM?searchVariation=173992526984#polycard_client=bookmarks', '2025-10-31', 0),
 (29, '2 Cadeiras de Escritório', 'Para a mesa', 4, 13, 800.00, 'https://abracasa.vteximg.com.br/arquivos/ids/181718/cadeira-de-escritorio-franca-preto-diagonal.jpg?v=637967860223230000', NULL, '2025-10-31', 0);
 
--- --------------------------------------------------------
 
---
--- Estrutura para tabela `prioridade`
---
 
-CREATE TABLE `prioridade` (
-  `id` int NOT NULL,
-  `nivel` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `prioridade_cor` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `prioridade`
---
-
-INSERT INTO `prioridade` (`id`, `nivel`, `prioridade_cor`) VALUES
-(14, 'Muito alta', '#de1717'),
-(5, 'Alta', '#FF4500'),
-(13, 'Média', '#7cfe84'),
-(8, 'Muito Baixa', '#66a8ff'),
-(12, 'Baixo', '#65dde6');
-
---
--- Índices para tabelas despejadas
---
-
---
--- Índices de tabela `categoria`
---
+-- Índices e constraints
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id`);
 
---
--- Índices de tabela `item`
---
+
 ALTER TABLE `item`
   ADD PRIMARY KEY (`id`),
   ADD KEY `categoria_id` (`categoria_id`),
   ADD KEY `prioridade_id` (`prioridade_id`);
 
---
--- Índices de tabela `prioridade`
---
+
 ALTER TABLE `prioridade`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT para tabelas despejadas
---
-
---
--- AUTO_INCREMENT de tabela `categoria`
---
+-- Auto increment
 ALTER TABLE `categoria`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
---
--- AUTO_INCREMENT de tabela `item`
---
+ALTER TABLE `prioridade`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
 ALTER TABLE `item`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
---
--- AUTO_INCREMENT de tabela `prioridade`
---
-ALTER TABLE `prioridade`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- Foreign Keys
+ALTER TABLE `item`
+  ADD CONSTRAINT `fk_item_prioridade` FOREIGN KEY (`prioridade_id`) REFERENCES `prioridade`(`id`),
+  ADD CONSTRAINT `fk_item_categoria` FOREIGN KEY (`categoria_id`) REFERENCES `categoria`(`id`);
