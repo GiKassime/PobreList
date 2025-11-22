@@ -13,11 +13,14 @@ function marcar(btn) {
     xhr.open('POST', '../../api/marcar_item.php');
     xhr.onload = function () {
         btn.disabled = false;
-        
+        if (xhr.status !== 200) { alert('Erro na requisição (status ' + xhr.status + ')'); return; }
+
+        let res = null;
+        try { res = JSON.parse(xhr.responseText || '{}'); } catch (e) { alert('Resposta inválida do servidor.'); return; }
 
         const card = btn.closest('.item-card');
         const col = card ? card.closest('.col') : null;
-        const target = res.comprado == 1 ? document.getElementById('cards-comprados') : document.getElementById('cards-nao-comprados');
+        const target = res && res.comprado == 1 ? document.getElementById('cards-comprados') : document.getElementById('cards-nao-comprados');
 
         if (col && target) target.prepend(col);
 
@@ -58,3 +61,6 @@ function marcar(btn) {
 function parseCurrency(text) { const m = (text||'').match(/R\$\s*([0-9\.\,]+)/); if(!m) return 0; return parseFloat(m[1].replace(/\./g,'').replace(/,/g,'.'))||0; }
 
 function formatCurrency(n) { return n.toLocaleString('pt-BR',{minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+// wrapper compatível com onclick="Marcar(this)"
+function Marcar(btn) { return marcar(btn); }
