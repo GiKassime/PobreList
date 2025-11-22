@@ -33,12 +33,7 @@ class ItemService {
 		}
 		if (!$item->getDataDesejo() || trim($item->getDataDesejo()) === '') {
 			$erros[] = 'A data desejada é obrigatória.';
-		} else {
-			$dataHoje = date('Y-m-d');
-			if ($item->getDataDesejo() < $dataHoje) {
-				$erros[] = 'A data desejada não pode ser no passado.';
-			}
-		}
+		} 
 		if (!$item->getUrlImagem() || trim($item->getUrlImagem()) === '') {
 			$erros[] = 'A URL da imagem é obrigatória.';
 		}

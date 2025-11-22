@@ -1,4 +1,4 @@
-<div class="item-card card shadow-sm border-0 h-100 d-flex flex-column">
+<div class="item-card card shadow-sm border-0 h-100 d-flex flex-column" data-item-id="<?= $item->getId() ?>" data-price="<?= $item->getPrecoEstimado() ?>">
     <?php if ($item->getUrlImagem()): ?>
         <img src="<?= htmlspecialchars($item->getUrlImagem()) ?>" class="card-img-top" alt="Imagem do item"
              style="object-fit:cover;max-height:200px;min-height:200px;">
@@ -46,14 +46,11 @@
                onclick="return confirm('Tem certeza que deseja excluir <?= htmlspecialchars($item->getNome()) ?>?');">
                 <i class="bi bi-trash"></i> Excluir
             </a>
-            <form method="POST" action="marcar_comprado.php" style="display:inline;">
-                <input type="hidden" name="id" value="<?= $item->getId() ?>">
-                <button type="submit" name="comprado" value="<?= $item->isComprado() ? '0' : '1' ?>"
-                        class="btn btn-sm <?= $item->isComprado() ? 'btn-success' : 'btn-outline-secondary' ?> flex-fill"
-                        title="<?= $item->isComprado() ? 'Desmarcar como comprado' : 'Marcar como comprado' ?>">
-                    <i class="bi bi-<?= $item->isComprado() ? 'check2-circle' : 'circle' ?> mx-1"></i><?= $item->isComprado() ? 'Comprado' : 'Marcar' ?>
-                </button>
-            </form>
+                <button type="button" onclick="marcar(this)" data-item-id="<?= $item->getId() ?>" data-comprado="<?= $item->isComprado() ? '1' : '0' ?>" 
+                    class="btn btn-sm btn-marcar <?= $item->isComprado() ? 'btn-success' : 'btn-outline-secondary' ?> flex-fill"
+                    title="<?= $item->isComprado() ? 'Desmarcar como comprado' : 'Marcar como comprado' ?>">
+                <i class="bi bi-<?= $item->isComprado() ? 'check2-circle' : 'circle' ?> mx-1"></i><?= $item->isComprado() ? 'Comprado' : 'Marcar' ?>
+            </button>
         </div>
     </div>
 </div>

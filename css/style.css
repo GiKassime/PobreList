@@ -118,3 +118,33 @@ body, html {
 		padding: 0 0.5rem;
 	}
 }
+
+/* Cards container box style (dark purple background, rounded, scrollbar and padding) */
+.cards-box {
+	background: linear-gradient(180deg, rgba(75,38,115,0.12), rgba(75,38,115,0.18));
+	border-radius: 12px;
+	padding: 0.75rem;
+	box-shadow: 0 6px 18px rgba(74,38,115,0.08);
+	border: 1px solid rgba(75,38,115,0.08);
+}
+.cards-box .col {
+	/* ensure spacing inside the box */
+	padding: 0.35rem;
+}
+.cards-box::-webkit-scrollbar {
+	width: 10px;
+}
+.cards-box::-webkit-scrollbar-thumb {
+	background: rgba(75,38,115,0.35);
+	border-radius: 10px;
+}
+.cards-box::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* When a card is removed, nice fade (used by JS if added) */
+.card-fade-out {
+	transition: opacity 300ms ease, transform 300ms ease;
+	opacity: 0;
+	transform: translateY(8px) scale(0.98);
+}
