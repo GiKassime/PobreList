@@ -21,6 +21,8 @@ include_once(__DIR__ . "/../include/header.php");
 include_once(__DIR__ . "/../include/nav.php");
 ?>
 
+<span id="confUrlBase" data-url-base="<?= defined('URL_BASE') ? URL_BASE : '' ?>"></span>
+
 <div class="container my-2 d-flex justify-content-center ">
     <div class="w-100" style="max-width: 650px; background-color: #fdcfe1ff; border-radius: 18px; box-shadow: 0 2px 16px #0001; padding: 32px 24px;">
     <h3 class="mb-4 text-center" style="font-family:'Fredoka One', Arial, sans-serif; color:#4b2673;">
@@ -30,27 +32,24 @@ include_once(__DIR__ . "/../include/nav.php");
         <input type="hidden" name="id" value="<?= $item ? $item->getId() : '' ?>">
         <div class="col-12">
             <label for="txtNome" class="form-label fw-bold">Nome do Item:</label>
-            <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Ex: Fone de ouvido" value="<?= $item ? $item->getNome() : '' ?>">
+            <input type="text" class="form-control" id="txtNome" name="nome" placeholder="Ex: Fone de ouvido" value="<?= isset($_POST['nome']) ? htmlspecialchars($_POST['nome']) : ($item ? $item->getNome() : '') ?>">
         </div>
         <div class="col-12">
             <label for="txtDescricao" class="form-label fw-bold">Descrição:</label>
-            <textarea class="form-control" id="txtDescricao" name="descricao" rows="2" placeholder="Detalhes do item"><?= $item ? $item->getDescricao() : '' ?></textarea>
+            <textarea class="form-control" id="txtDescricao" name="descricao" rows="2" placeholder="Detalhes do item"><?= isset($_POST['descricao']) ? htmlspecialchars($_POST['descricao']) : ($item ? $item->getDescricao() : '') ?></textarea>
         </div>
         <div class="col-12">
             <label for="txtUrlImagem" class="form-label fw-bold">URL da Imagem:</label>
-            <input type="text" class="form-control" id="txtUrlImagem" name="url_imagem" placeholder="https://exemplo.com/imagem.jpg" value="<?= $item ? $item->getUrlImagem() : '' ?>">
+            <input type="text" class="form-control" id="txtUrlImagem" name="url_imagem" placeholder="https://exemplo.com/imagem.jpg" value="<?= isset($_POST['url_imagem']) ? htmlspecialchars($_POST['url_imagem']) : ($item ? $item->getUrlImagem() : '') ?>">
         </div>
         <div class="col-12">
             <label for="txtUrlWeb" class="form-label fw-bold">Link do Item (opcional):</label>
-            <input type="url" class="form-control" id="txtUrlWeb" name="url_web" placeholder="https://exemplo.com/produto" value="<?= $item ? $item->getUrlWeb() : '' ?>">
+            <input type="url" class="form-control" id="txtUrlWeb" name="url_web" placeholder="https://exemplo.com/produto" value="<?= isset($_POST['url_web']) ? htmlspecialchars($_POST['url_web']) : ($item ? $item->getUrlWeb() : '') ?>">
         </div>
         <div class="col-md-6">
             <label for="selCategoria" class="form-label fw-bold">Categoria:</label>
-            <select class="form-select" id="selCategoria" name="categoria">
-                <option value="">Selecione</option>
-                <?php foreach ($categorias as $c): ?>
-                    <option value="<?= $c->getId() ?>" <?= $item && $item->getCategoria() && $item->getCategoria()->getId() == $c->getId() ? 'selected' : '' ?>><?= $c->getNome() ?></option>
-                <?php endforeach; ?>
+            <select class="form-select" id="selCategoria" name="categoria" idSelecionado="<?= isset($_POST['categoria']) ? htmlspecialchars($_POST['categoria']) : ($item && $item->getCategoria() ? $item->getCategoria()->getId() : '0') ?>">
+                <option value="">Carregando...</option>
             </select>
         </div>
         <div class="col-md-6">
@@ -111,3 +110,5 @@ include_once(__DIR__ . "/../include/nav.php");
 </div>
 
 <?php include_once(__DIR__ . '/../include/footer.php'); ?>
+
+<script src="js/carregar_categorias.js"></script>

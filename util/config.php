@@ -13,4 +13,5 @@ define("DB_PASSWORD", "root");
 //Configuração do ambiente
 
 define("AMB_DEV",true);
+define("URL_BASE", "/pobrelist");
 //define("AMB_DEV",false);
