@@ -2,11 +2,10 @@
 require_once(__DIR__ . '/../controller/CategoriaController.php');
 $cont = new CategoriaController();
 $cats = $cont->listar();
-$out = [];
+$saida = [];
 foreach ($cats as $c) {
-    $out[] = [
+    $saida[] = [
         'id' => $c->getId(),
         'nome' => $c->getNome()
     ];
 }
-echo json_encode($out);
