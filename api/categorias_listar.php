@@ -9,3 +9,5 @@ foreach ($cats as $c) {
         'nome' => $c->getNome()
     ];
 }
+// Retorna JSON com a lista de categorias
+echo json_encode($saida);

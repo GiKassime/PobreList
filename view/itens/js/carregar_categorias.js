@@ -9,7 +9,7 @@ function carregarCategorias() {
     // Apagar as options já existentes
     selCategoria.innerHTML = '';
 
-    // Criar um option com o valor Selecione
+    // Criar um option com o valor Selecione)
     var selecione = {"id": 0, "nome": "---Selecione---"};
     adicionarOptionCategoria(selecione);
     
